@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python and Flask</title>
+</head>
+
+<body>
+<header class="navbar">
+  <form action="/upload" method="post" enctype="multipart/form-data" >
+      <span class="btn btn-default btn-file">
+        Browse <input type="file" name="image">
+      </span>
+
+    <input type="submit" value="Upload your image" class="btn btn-primary">
+  </form>
+
+</header>
+
+<div class="text-center">
+    {% if upload %}
+       <div class="alert alert-danger" style="margin-top:18px;">
+	       <strong>probability: {{p}}</strong> !
+       </div>
+    {% endif %}
+</div>
+</body>
+</html>
