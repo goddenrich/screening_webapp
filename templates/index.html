@@ -18,6 +18,10 @@
 </header>
 
 <div class="text-center">
+
+    {% if a %}
+	    <img src="{{ an }}" alt="Loading" title="Loading" />
+    {% endif %}
     {% if upload %}
        <div class="alert alert-danger" style="margin-top:18px;">
 	       <strong>probability: {{p}}</strong> !

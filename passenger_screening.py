@@ -231,7 +231,7 @@ def load_temp(data, target):
 
 	return lasagne.utils.floatX(X_train), Y_train.reshape(Y_train.shape[0],1).astype('float32')
 def load_temp_test_single(path):
-	filename = "uploads/" + path
+	filename = path
 	t = read_img(filename)
 	#t = t[:,:,[0,8,15]]
 
@@ -523,7 +523,7 @@ def train(n=5, model=None, classifypath=None):
 		train_fn = theano.function([input_var, target_var], loss, updates=updates, allow_input_downcast=True)
 
 	# Create a loss expression for validation/testing
-	test_prediction = lasagne.layers.get_output(network, deterministic=True)
+	test_prediction = lasagne.layers.get_output(network)
 	test_loss = lasagne.objectives.binary_crossentropy(test_prediction, target_var)
 
 	test_loss = test_loss.mean()
