@@ -13,8 +13,6 @@ from matplotlib import rc
 from IPython.display import HTML
 
 
-# matplotlib.rc('animation', html='html5')
-
 def read_header(infile):
     # declare dictionary
     h = dict()
@@ -166,7 +164,7 @@ def plot_image(path):
     print("infile", path)
     data = read_data(path)
     img = data
-    fig = matplotlib.pyplot.figure(figsize = (15,15))
+    fig = matplotlib.pyplot.figure(figsize = (5,5))
     ax = fig.add_subplot(111)
     def animate(i):
         im = ax.imshow(np.flipud(img[:,:,i].transpose()))
