@@ -56,7 +56,6 @@ def upload_file():
     animf = os.path.join(app.config['UPLOAD_FOLDER'], 'anim.gif')
     print(animf)
     list2[0].save(animf, writer='imagemagick', fps=3)
-    prob = 0.1
     if prob > 0.5:
         bg_clr = 'red'
     else:
