@@ -2,12 +2,28 @@ import os
 from flask import Flask, render_template, request
 from passenger_screening import train
 from animation import plot_image
-from multiprocessing import Process
+from multiprocessing import Pool
+#from multiprocessing import Process
+#import multiprocessing as mp
+import threading
+from threading import Thread
+import time
 
 app = Flask(__name__)
 
 PEOPLE_FOLDER = os.path.join('static', 'people_photo')
 app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
+
+list1=list()
+list2=list()
+
+def func1(a, b, c):
+    global list1
+    list1 = [train(a, b, c)[0][0]]
+
+def func2(x):
+    global list2
+    list2 = [plot_image(x)]
 
 @app.route('/')
 @app.route('/index')
@@ -21,12 +37,23 @@ def upload_file():
     file.save(f)
     # print(f)
 
+    #pool = Pool(processes=2)
+    #prob = train(5, "passenger_screening_1512750744.82.npz", f)[0][0]
+    #prob = pool.map_async(train, 5, "passenger_screening_1512750744.82.npz", f)[0][0]
+    #anim = plot_image(f)
+    #t = (5, "passenger_screening_1512750744.82.npz", f)
+    #pool.apply_async(train, args=t)
+     
+    Thread(target = func1, args=(5,"passenger_screening_1512750744.82.npz", f)).start()
+    Thread(target = func2, args=(f,)).start()
 
-    prob = train(5, "passenger_screening_1512750744.82.npz", f)[0][0]
-    anim = plot_image(f)
+    while not list1 or not list2:
+        time.sleep(4)
+    prob = list1[0]
+    
     animf = os.path.join(app.config['UPLOAD_FOLDER'], 'anim.gif')
     print(animf)
-    anim.save(animf, writer='imagemagick', fps=3)
+    list2[0].save(animf, writer='imagemagick', fps=3)
     return render_template('index.html', upload = True, p =  prob, a = True, an = animf)
 
 @app.after_request
