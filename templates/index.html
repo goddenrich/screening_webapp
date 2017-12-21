@@ -6,6 +6,9 @@
 </head>
 
 <body>
+{% if bg %}
+	<body style="background-color:{{ bg }};">
+{% endif %}
 <header class="navbar">
   <form action="/upload" method="post" enctype="multipart/form-data" >
       <span class="btn btn-default btn-file">

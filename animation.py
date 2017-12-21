@@ -165,7 +165,13 @@ def plot_image(path):
     data = read_data(path)
     img = data
     fig = matplotlib.pyplot.figure(figsize = (5,5))
+    fig.patch.set_alpha(0.)
     ax = fig.add_subplot(111)
+    ax.xaxis.set_visible(False)
+    ax.yaxis.set_visible(False)
+    ax.set_frame_on(False)
+    fig.tight_layout()
+
     def animate(i):
         im = ax.imshow(np.flipud(img[:,:,i].transpose()))
         return [im]

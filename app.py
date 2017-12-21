@@ -30,6 +30,8 @@ def func2(x):
 def show_index():
     return render_template('index.html')
 
+bg_clr = False
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     file = request.files['image']
@@ -54,7 +56,12 @@ def upload_file():
     animf = os.path.join(app.config['UPLOAD_FOLDER'], 'anim.gif')
     print(animf)
     list2[0].save(animf, writer='imagemagick', fps=3)
-    return render_template('index.html', upload = True, p =  prob, a = True, an = animf)
+    prob = 0.1
+    if prob > 0.5:
+        bg_clr = 'red'
+    else:
+        bg_clr = 'lightgreen'
+    return render_template('index.html', upload = True, p =  prob, a = True, an = animf, bg = bg_clr)
 
 @app.after_request
 def add_header(r):
