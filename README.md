@@ -22,7 +22,7 @@ to Run:
 
 3) run flask run
 
-4) in your terminal it should say something like:
+in your terminal it should say something like:
   * Serving Flask app "app"
-  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-  navigate to http://127.0.0.1:5000/ (or alternative if different on your system) in your web browser. (tested on chrome and firefox)
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)  
+4) navigate to http://127.0.0.1:5000/ (or alternative if different on your system) in your web browser. (tested on chrome and firefox)
