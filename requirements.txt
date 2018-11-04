@@ -18,7 +18,7 @@ decorator==4.0.11
 easydict==1.7
 entrypoints==0.2.2
 enum34==1.1.6
-Flask==0.12.2
+Flask==0.12.3
 Flask-SocketIO==0.6.0
 Flask-WTF==0.14.2
 funcsigs==1.0.2
