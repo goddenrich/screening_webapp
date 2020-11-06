@@ -28,7 +28,7 @@ gevent==1.2.2
 gevent-socketio==0.3.6
 gevent-websocket==0.10.1
 greenlet==0.4.12
-gunicorn==17.5
+gunicorn==19.5.0
 h5py==2.7.1
 html5lib==0.9999999
 idna==2.6
